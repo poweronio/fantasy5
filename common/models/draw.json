@@ -1,0 +1,43 @@
+{
+  "name": "draw",
+  "plural": "draws",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "numbers": {
+      "type": [
+        "number"
+      ],
+      "required": true
+    },
+    "consumed": {
+      "type": "boolean"
+    },
+    "date": {
+      "type": "date"
+    },
+    "n1":{
+      "type":"number"
+    },
+    "n2":{
+      "type":"number"
+    },
+    "n3":{
+      "type":"number"
+    },
+
+    "n4":{
+      "type":"number"
+    },
+    "n5":{
+      "type":"number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
