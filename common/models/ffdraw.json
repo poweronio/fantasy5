@@ -1,6 +1,6 @@
 {
-  "name": "draw",
-  "plural": "draws",
+  "name": "ffdraw",
+  "plural": "ffdraws",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

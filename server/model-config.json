@@ -38,5 +38,9 @@
   "draw": {
     "dataSource": "db",
     "public": true
+  },
+  "ffdraw": {
+    "dataSource": "fantasy",
+    "public": true
   }
 }
