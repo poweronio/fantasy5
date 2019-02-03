@@ -8,9 +8,7 @@
   },
   "properties": {
     "numbers": {
-      "type": [
-        "number"
-      ],
+      "type": "string",
       "required": true
     },
     "consumed": {
@@ -28,11 +26,22 @@
     "n3":{
       "type":"number"
     },
-
     "n4":{
       "type":"number"
     },
     "n5":{
+      "type":"number"
+    },
+    "d1":{
+      "type":"number"
+    },
+    "d2":{
+      "type":"number"
+    },
+    "d3":{
+      "type":"number"
+    },
+    "d4":{
       "type":"number"
     }
   },
