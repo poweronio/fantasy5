@@ -9,12 +9,16 @@ module.exports = function(Draw) {
 
     function drawCreate(a,cb){
         Draw.create({
-            numbers:a,
-            n1:a[0],
-            n2:a[1],
-            n3:a[2],
-            n4:a[3],
-            n5:a[4]
+          numbers:JSON.stringify(a),
+          n1:a[0],
+          n2:a[1],
+          n3:a[2],
+          n4:a[3],
+          n5:a[4],
+          d1:a[1]-a[0],
+          d2:a[2]-a[1],
+          d3:a[3]-a[2],
+          d4:a[4]-a[3]
         },cb);
     }
     
@@ -30,33 +34,38 @@ module.exports = function(Draw) {
     }
   }
 
-    // fs.createReadStream('ff.csv')
-    // .on('open', function () {
-    //   console.log('OPEN');
-    // })
-    // .pipe(csv())
-    // .on('data',function(data){
-    //   Draw.findOne({where:{
-    //     n1:data.n1,
-    //     n2:data.n2,
-    //     n3:data.n3,
-    //     n4:data.n4,
-    //     n5:data.n5,
-    //     numbers:[data.n1,data.n2,data.n3,data.n4,data.n5],
-    //   }},function(err,data){
-    //     if(!err){
-    //         console.log('***');
-    //       console.log(data);
-    //     }
-    //   });
-    // })
-    // .on('end',function(results){
-    //     console.log(results);
-    // })
-    // .on('error',function(err){
-    //   console.log(err);
-    // });
-    // }
+  Draw.locate = function(cb){
+
+  
+
+    fs.createReadStream('ff.csv')
+    .on('open', function () {
+      console.log('OPEN');
+    })
+    .pipe(csv())
+    .on('data',function(data){
+      // console.log(parseInt(data.n1));
+      Draw.findOne({where:{
+        numbers:data.numbers
+      }},function(err,_data){
+        if(!err){
+            console.log('***');
+          console.log(_data.id);
+          Draw.patch({id:_data.id},{consumed:true});
+        }else console.log(err)
+      });
+    })
+    .on('end',function(results){
+        console.log(results);
+    })
+    .on('error',function(err){
+      console.log(err);
+    });
+    }
+
+    Draw.remoteMethod('locate', {
+      returns: { arg: 'greeting', type: 'string' }
+    });
     
     Draw.remoteMethod('greet', {
         returns: { arg: 'greeting', type: 'string' }
